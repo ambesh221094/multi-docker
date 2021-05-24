@@ -5,20 +5,20 @@ services:
   - docker
 
 before_install:
-  - docker build -t ambesh/react-test -f ./client/Dockerfile.dev ./client
+  - docker build -t ambeshb8/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run -e CI=true ambesh/react-test npm test
+  - docker run -e CI=true ambeshb8/react-test npm test
 
 after_success:
-  - docker build -t ambesh/multi-client ./client
-  - docker build -t ambesh/multi-nginx ./nginx
-  - docker build -t ambesh/multi-server ./server
-  - docker build -t ambesh/multi-worker ./worker
+  - docker build -t ambeshb8/multi-client ./client
+  - docker build -t ambeshb8/multi-nginx ./nginx
+  - docker build -t ambeshb8/multi-server ./server
+  - docker build -t ambeshb8/multi-worker ./worker
   # Log in to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Take those images and push them to docker hub
-  - docker push ambesh/multi-client
-  - docker push ambesh/multi-nginx
-  - docker push ambesh/multi-server
-  - docker push ambesh/multi-worker
+  - docker push ambeshb8/multi-client
+  - docker push ambeshb8/multi-nginx
+  - docker push ambeshb8/multi-server
+  - docker push ambeshb8/multi-worker
